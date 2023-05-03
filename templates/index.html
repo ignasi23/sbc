@@ -4,9 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Football Player Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #6ab417, #176ab4);
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        form {
+            margin-bottom: 2rem;
+        }
+        label, input {
+            font-size: 1.2rem;
+        }
+        button {
+            background-color: #1a8cff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .autores {
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .logo {
+            width: 150px;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Search for a football player</h1>
+    <h1>Football Player Info</h1>
     <form action="/" method="post">
         <label for="player_name">Player Name:</label>
         <input type="text" id="player_name" name="player_name" required>
@@ -15,5 +54,9 @@
     {% if error %}
         <p>{{ error }}</p>
     {% endif %}
+    <div class="autores">
+        Autores: Ignacio Díaz Nieto y Juan De La Torre Melero
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/URJC_logo.svg/2560px-URJC_logo.svg.png" alt="Logo URJC" class="logo">
 </body>
 </html>
