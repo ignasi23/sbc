@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Player Info - Results</title>
+</head>
+<body>
+    <h1>Player Information</h1>
+    <p>Player: {{ player_info['playerLabel']['value'] }} (Wikidata ID: {{ wikidata_id }})</p>
+    <p>Height: {{ player_info['height']['value'] if 'height' in player_info else 'N/A' }}</p>
+    <h2>Teams:</h2>
+    <ul>
+        {% for team in teams %}
+            <li>{{ team['teamLabel']['value'] }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Positions:</h2>
+    <ul>
+        {% for position in positions %}
+            <li>{{ position['positionLabel']['value'] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Search again</a>
+</body>
+</html>
