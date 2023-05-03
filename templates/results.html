@@ -47,16 +47,16 @@
     </style>
 </head>
 <body>
-    <h1>Player Information</h1>
-    <p>Player: {{ player_info['playerLabel']['value'] }} (Wikidata ID: {{ wikidata_id }})</p>
-    <p>Height: {{ player_info['height']['value'] if 'height' in player_info else 'N/A' }}</p>
-    <h2>Teams:</h2>
+    <h1>Información del Jugador</h1>
+    <p>Jugador: {{ player_info['playerLabel']['value'] }} (Wikidata ID: {{ wikidata_id }})</p>
+    <p>Altura: {{ player_info['height']['value'] if 'height' in player_info else 'N/A' }}</p>
+    <h2>Equipos en los que ha jugado:</h2>
     <ul>
         {% for team in teams %}
             <li>{{ team['teamLabel']['value'] }}</li>
         {% endfor %}
     </ul>
-    <h2>Positions:</h2>
+    <h2>Posición:</h2>
     <ul>
         {% for position in positions %}
             <li>{{ position['positionLabel']['value'] }}</li>
