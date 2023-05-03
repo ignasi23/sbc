@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 import sys
 from SPARQLWrapper import SPARQLWrapper, JSON
+import os
 
-app = Flask(__name__)
+
+app = Flask(__name__, template_folder=os.path.abspath("templates"))
 
 def get_player_info(name):
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
