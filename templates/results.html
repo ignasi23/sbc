@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Player Info - Results</title>
+    <title> Info de los jugadores </title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
     <h1>Información del Jugador</h1>
     <p>Jugador: {{ player_info['playerLabel']['value'] }} (Wikidata ID: {{ wikidata_id }})</p>
     <p>Altura: {{ player_info['height']['value'] if 'height' in player_info else 'N/A' }}</p>
-    <h2>Equipos en los que ha jugado:</h2>
+    <h2>Equipos:</h2>
     <ul>
         {% for team in teams %}
             <li>{{ team['teamLabel']['value'] }}</li>
