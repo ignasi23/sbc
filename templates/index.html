@@ -10,16 +10,26 @@
             background: linear-gradient(45deg, #6ab417, #176ab4);
             color: white;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
         form {
             margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         label, input {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
         button {
             background-color: #1a8cff;
@@ -29,22 +39,31 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 18px;
             margin: 4px 2px;
             cursor: pointer;
             border-radius: 4px;
         }
         .autores {
-            font-size: 1rem;
+            font-size: 1.2rem;
             margin-top: 2rem;
         }
         .logo {
-            width: 150px;
+            width: 200px;
+            margin-top: 1rem;
+        }
+        .football-logo {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+        .source {
+            font-size: 1rem;
             margin-top: 1rem;
         }
     </style>
 </head>
 <body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Football_pictogram.svg/1024px-Football_pictogram.svg.png" alt="Football Logo" class="football-logo">
     <h1>Football Player Info</h1>
     <form action="/" method="post">
         <label for="player_name">Player Name:</label>
@@ -54,9 +73,13 @@
     {% if error %}
         <p>{{ error }}</p>
     {% endif %}
+    <div class="source">
+        Data source: <a href="https://www.wikidata.org" target="_blank">Wikidata</a>
+    </div>
     <div class="autores">
         Autores: Ignacio Díaz Nieto y Juan De La Torre Melero
     </div>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/URJC_logo.svg/2560px-URJC_logo.svg.png" alt="Logo URJC" class="logo">
 </body>
 </html>
+
