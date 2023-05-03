@@ -87,7 +87,7 @@ def index():
             positions = get_player_positions(wikidata_id)
             return render_template("results.html", player_info=player_info, wikidata_id=wikidata_id, teams=teams, positions=positions)
         else:
-            return render_template("index.html", error=f"No player found with name '{player_name}'.")
+            return render_template("index.html", error=f"No se ha encontrado un jugador con el nombre: '{player_name}'.")
     return render_template("index.html")
 
 if __name__ == "__main__":
