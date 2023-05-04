@@ -90,5 +90,29 @@ def index():
             return render_template("index.html", error=f"No se ha encontrado un jugador con el nombre: '{player_name}'.")
     return render_template("index.html")
 
+@app.route("/search_players", methods=["GET"])
+def search_players():
+    term = request.args.get("term")
+    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+    sparql.setQuery(f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX dbo: <http://dbpedia.org/ontology/>
+        SELECT ?player ?playerLabel
+        WHERE {{
+            ?player rdf:type dbo:SoccerPlayer.
+            ?player rdfs:label ?playerLabel.
+            FILTER (regex(?playerLabel, "{term}", "i")).
+        }}
+        LIMIT 10
+    """)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    if results["results"]["bindings"]:
+        player_names = [result["playerLabel"]["value"] for result in results["results"]["bindings"]]
+        return jsonify(player_names)
+    else:
+        return jsonify([])
+
 if __name__ == "__main__":
     app.run(debug=True)
