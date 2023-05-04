@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultas Jugadores de Fútbol</title>
     <style>
-        body {
+             body {
             font-family: Arial, sans-serif;
             background: linear-gradient(45deg, #6ab417, #176ab4);
             color: white;
             text-align: center;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr auto;
             align-items: center;
             justify-content: center;
             height: 100vh;
@@ -108,6 +108,7 @@
 </script>
 </head>
 <body>
+    <div class="content-container">
     <div class="football-logo-container">
         <img src="https://www.pngplay.com/wp-content/uploads/13/Iker-Casillas-No-Background.png">
     </div>
@@ -117,19 +118,20 @@
         <input type="text" id="player_name" name="player_name" required>
         <button type="submit">Buscar</button>
     </form>
-    {% if error %}
-        <p>{{ error }}</p>
-    {% endif %}
-    <div class="source">
-        Fuentes de datos: <a>DBPedia y Wikidata</a>
-    </div>
-    <div class="autores">
-        Autores: Ignacio Díaz Nieto y Juan De La Torre Melero
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <div class="source">
+            Fuentes de datos: <a>DBPedia y Wikidata</a>
+        </div>
+        <div class="autores">
+            Autores: Ignacio Díaz Nieto y Juan De La Torre Melero
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/URJC_logo.svg/2560px-URJC_logo.svg.png" alt="Logo URJC" class="logo">
     </div>
     <div style="text-align: right; margin-right: 1rem;">
-    <h3>Cómo usar la web:</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/8bmjIggqHV0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>Cómo usar la web:</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8bmjIggqHV0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/URJC_logo.svg/2560px-URJC_logo.svg.png" alt="Logo URJC" class="logo">
 </body>
 </html>
