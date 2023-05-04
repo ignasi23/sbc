@@ -85,17 +85,6 @@
         color: white;
         cursor: pointer;
     }
-        
-        .ui-autocomplete .ui-menu-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.ui-autocomplete .ui-menu-item .icon {
-    width: 20px;
-}
-
     </style>
     <script>
     function removeDuplicates(names) {
@@ -104,29 +93,18 @@
 
     $(document).ready(function () {
         $("#player_name").autocomplete({
-    source: function (request, response) {
-        $.getJSON("/search_players", { term: request.term }, function (data) {
-            const uniqueData = removeDuplicates(data);
-            const formattedData = uniqueData.map(name => {
-                return {
-                    label: name,
-                    value: name
-                };
-            });
-            response(formattedData);
+            source: function (request, response) {
+                $.getJSON("/search_players", { term: request.term }, function (data) {
+                    response(removeDuplicates(data));
+                });
+            },
+            minLength: 2,
+            select: function (event, ui) {
+                $("#player_name").val(ui.item.value);
+                return false;
+            }
         });
-    },
-    minLength: 2,
-    select: function (event, ui) {
-        $("#player_name").val(ui.item.value);
-        return false;
-    }
-}).data("ui-autocomplete")._renderItem = function (ul, item) {
-    return $("<li>")
-        .append("<div class='icon'><img src='https://static.vecteezy.com/system/resources/previews/018/923/811/original/soccer-ball-symbol-icon-png.png'></div>")
-        .append("<div>" + item.label + "</div>")
-        .appendTo(ul);
-};
+    });
 </script>
 </head>
 <body>
@@ -148,6 +126,7 @@
     <div class="autores">
         Autores: Ignacio Díaz Nieto y Juan De La Torre Melero
     </div>
+    
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/URJC_logo.svg/2560px-URJC_logo.svg.png" alt="Logo URJC" class="logo">
 </body>
 </html>
