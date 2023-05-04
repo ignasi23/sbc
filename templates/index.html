@@ -67,11 +67,37 @@
             font-size: 1rem;
             margin-top: 1rem;
         }
+         .ui-autocomplete {
+        border: 1px solid #ccc;
+        background: white;
+        color: #333;
+        text-align: left;
+        padding: 5px;
+        font-size: 1rem;
+    }
+
+    .ui-autocomplete .ui-menu-item {
+        padding: 5px 10px;
+    }
+
+    .ui-autocomplete .ui-menu-item:hover {
+        background-color: #176ab4;
+        color: white;
+        cursor: pointer;
+    }
     </style>
     <script>
+    function removeDuplicates(names) {
+        return [...new Set(names)];
+    }
+
     $(document).ready(function () {
         $("#player_name").autocomplete({
-            source: "/search_players",
+            source: function (request, response) {
+                $.getJSON("/search_players", { term: request.term }, function (data) {
+                    response(removeDuplicates(data));
+                });
+            },
             minLength: 2,
             select: function (event, ui) {
                 $("#player_name").val(ui.item.value);
