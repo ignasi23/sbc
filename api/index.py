@@ -97,7 +97,7 @@ def search_players():
     sparql.setQuery(f"""
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dbo: <http://dbpedia.org/ontology/>
-        SELECT ?player ?playerLabel
+        SELECT DISTINCT ?playerLabel
         WHERE {{
             ?player rdf:type dbo:SoccerPlayer.
             ?player rdfs:label ?playerLabel.
