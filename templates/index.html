@@ -68,6 +68,18 @@
             margin-top: 1rem;
         }
     </style>
+    <script>
+    $(document).ready(function () {
+        $("#player_name").autocomplete({
+            source: "/search_players",
+            minLength: 2,
+            select: function (event, ui) {
+                $("#player_name").val(ui.item.value);
+                return false;
+            }
+        });
+    });
+</script>
 </head>
 <body>
     <div class="football-logo-container">
